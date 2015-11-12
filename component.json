@@ -1,7 +1,0 @@
-{
-    "repos": "https://github.com/moment/moment.git",
-    "version": "2.10.6",
-    "description": "Parse, validate, manipulate, and display dates in javascript. http://momentjs.com",
-    "name": "moment",
-    "main": "moment.js"
-}
