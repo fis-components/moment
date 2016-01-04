@@ -4,7 +4,7 @@
     "name": "moment",
     "main": "./moment.js",
     "umd2commonjs": false,
-    "version": "2.10.6",
+    "version": "2.11.0",
     "tag": "master",
     "reposType": "npm"
 }
