@@ -1,0 +1,10 @@
+{
+    "repos": "https://github.com/moment/moment.git",
+    "description": "Parse, validate, manipulate, and display dates",
+    "name": "moment",
+    "main": "./moment.js",
+    "umd2commonjs": false,
+    "version": "2.10.6",
+    "tag": "master",
+    "reposType": "npm"
+}
