@@ -1,15 +1,16 @@
-//! moment.js locale configuration
-//! locale : Serbian-latin (sr)
-//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
+// moment.js locale configuration
+// locale : Serbian-latin (sr)
+// author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
-;(function (global, factory) {
-   typeof exports === 'object' && typeof module !== 'undefined'
-       && typeof require === 'function' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['moment'], factory) :
-   factory(global.moment)
-}(this, function (moment) { 'use strict';
-
-
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['moment'], factory); // AMD
+    } else if (typeof exports === 'object') {
+        module.exports = factory(require('../moment')); // Node
+    } else {
+        factory(window.moment); // Browser global
+    }
+}(function (moment) {
     var translator = {
         words: { //Different grammatical cases
             m: ['jedan minut', 'jedne minute'],
@@ -33,23 +34,23 @@
         }
     };
 
-    var sr = moment.defineLocale('sr', {
+    return moment.defineLocale('sr', {
         months: ['januar', 'februar', 'mart', 'april', 'maj', 'jun', 'jul', 'avgust', 'septembar', 'oktobar', 'novembar', 'decembar'],
         monthsShort: ['jan.', 'feb.', 'mar.', 'apr.', 'maj', 'jun', 'jul', 'avg.', 'sep.', 'okt.', 'nov.', 'dec.'],
         weekdays: ['nedelja', 'ponedeljak', 'utorak', 'sreda', 'četvrtak', 'petak', 'subota'],
         weekdaysShort: ['ned.', 'pon.', 'uto.', 'sre.', 'čet.', 'pet.', 'sub.'],
         weekdaysMin: ['ne', 'po', 'ut', 'sr', 'če', 'pe', 'su'],
         longDateFormat: {
-            LT: 'H:mm',
-            LTS : 'H:mm:ss',
-            L: 'DD. MM. YYYY',
-            LL: 'D. MMMM YYYY',
-            LLL: 'D. MMMM YYYY H:mm',
-            LLLL: 'dddd, D. MMMM YYYY H:mm'
+            LT: "H:mm",
+            L: "DD. MM. YYYY",
+            LL: "D. MMMM YYYY",
+            LLL: "D. MMMM YYYY LT",
+            LLLL: "dddd, D. MMMM YYYY LT"
         },
         calendar: {
             sameDay: '[danas u] LT',
             nextDay: '[sutra u] LT',
+
             nextWeek: function () {
                 switch (this.day()) {
                 case 0:
@@ -81,28 +82,24 @@
             sameElse : 'L'
         },
         relativeTime : {
-            future : 'za %s',
-            past   : 'pre %s',
-            s      : 'nekoliko sekundi',
+            future : "za %s",
+            past   : "pre %s",
+            s      : "nekoliko sekundi",
             m      : translator.translate,
             mm     : translator.translate,
             h      : translator.translate,
             hh     : translator.translate,
-            d      : 'dan',
+            d      : "dan",
             dd     : translator.translate,
-            M      : 'mesec',
+            M      : "mesec",
             MM     : translator.translate,
-            y      : 'godinu',
+            y      : "godinu",
             yy     : translator.translate
         },
-        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
             doy : 7  // The week that contains Jan 1st is the first week of the year.
         }
     });
-
-    return sr;
-
 }));
